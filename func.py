@@ -1,7 +1,7 @@
 import cv2
 import os
 import argparse
-
+import subprocess
 
 
 parser = argparse.ArgumentParser()
@@ -29,8 +29,10 @@ print('fps:',fps)
 with open('batch.bat', 'w') as f:
     for i in range(count): 
         f.write('realesrgan-ncnn-vulkan.exe -i input_videos/{}/frame{}.jpg -o frame{}.png\n'.format(vidname, i, i))
-    f.write('ffmpeg -i frame%d.png -c:v libx264 -vf fps={} -pix_fmt yuv420p {}_result.mp4\n'.format(fps, vidname))
+    f.write('ffmpeg -i frame%%d.png -c:v libx264 -vf fps={} -pix_fmt yuv420p {}_result.mp4\n'.format(fps, vidname))
 
-    for i in range(count):
-        f.write('del /f frame{}.png\n'.format(i))
+    # for i in range(count):
+    #     f.write('del /f frame{}.png\n'.format(i))
 
+p = subprocess.Popen("batch.bat")
+stdout, stderr = p.communicate()
