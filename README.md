@@ -161,7 +161,7 @@ Requires a NVIDIA GPU
    
    Replace the details in <> and run this command
    ```bash
-   ffmpeg -i results/<video_name> -c:v libx264 -vf fps=<your original video's FPS> -pix_fmt yuv420p <video_name>_result.mp4
+   ffmpeg -i results/<video_name>%d.png -c:v libx264 -vf fps=<your original video's FPS> -pix_fmt yuv420p <video_name>_result.mp4
    ```
   You will see your video is now upscaled x4 and can be found under the name `<video_name>_result.mp4`
   
