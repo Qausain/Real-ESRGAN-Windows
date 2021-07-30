@@ -1,6 +1,6 @@
 # Real-ESRGAN
 
-This is a forked version of Real-ESRGAN. This repo includes detailed tutorials on how to use Real-ESRGAN on Windows locally through the .exe or PyTorch. 
+This is a forked version of Real-ESRGAN. This repo includes detailed tutorials on how to use Real-ESRGAN on Windows locally through the .exe or PyTorch for both images and videos. 
 
 [![download](https://img.shields.io/github/downloads/xinntao/Real-ESRGAN/total.svg)](https://github.com/xinntao/Real-ESRGAN/releases)
 [![Open issue](https://isitmaintained.com/badge/open/xinntao/Real-ESRGAN.svg)](https://github.com/xinntao/Real-ESRGAN/issues)
