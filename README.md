@@ -31,8 +31,8 @@ We extend the powerful ESRGAN to a practical restoration application (namely, Re
 Any updates on the main repository will not be updated here. Please use this just as a tutorial reference, and refer any new updates from the original. 
 
 There are 2 options to run Real-ESRGAN:
-1. Windows Executable Files (.exe)
-2. CUDA & PyTorch
+1. [Windows Executable Files (.exe)](https://github.com/bycloudai/Real-ESRGAN-Windows/blob/master/README.md#windows-executable-files-exe-vulkan-ver)
+2. [CUDA & PyTorch](https://github.com/bycloudai/Real-ESRGAN-Windows/blob/master/README.md#cuda--pytorch)
 
 ---
 
