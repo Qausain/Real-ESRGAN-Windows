@@ -48,7 +48,7 @@ You can download **Windows executable files** from https://github.com/xinntao/Re
 
 This executable file is **portable** and includes all the binaries and models required. No CUDA or PyTorch environment is needed.<br>
 
-1. Place the images in the same folder level as your .exe file. Download the `func.py` in this repo.
+1. Place the images in the same folder level as your .exe file. 
 2. `cd` To where your file is located on your command prompt, and you can simply run the following command:
    (replace the <> with the corresponding name)
    ```bash
@@ -56,7 +56,7 @@ This executable file is **portable** and includes all the binaries and models re
    ```
 3. (Optional) run through a video 
 
-   I've wrote a simple Python file that would generate a .bat file that will help you run through all the frames in a video.
+   I've wrote a simple Python file that would generate a .bat file that will help you run through all the frames in a video. Download the `func.py` in this repo.
    
    Open up [Anaconda](https://www.anaconda.com/download/) prompt, input these commands to download these libraries:
    ```
