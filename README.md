@@ -13,7 +13,10 @@ This is a forked version of Real-ESRGAN. This repo includes detailed tutorials o
 Real-ESRGAN aims at developing **Practical Algorithms for General Image Restoration**.<br>
 We extend the powerful ESRGAN to a practical restoration application (namely, Real-ESRGAN), which is trained with pure synthetic data.
 
-:triangular_flag_on_post: The training codes have been released. A detailed guide can be found in [Training.md](Training.md).
+:triangular_flag_on_post: **Updates**
+
+- :white_check_mark: [The inference code](inference_realesrgan.py) supports: 1) **tile** options; 2) images with **alpha channel**; 3) **gray** images; 4) **16-bit** images.
+- :white_check_mark: The training codes have been released. A detailed guide can be found in [Training.md](Training.md).
 
 ### :book: Real-ESRGAN: Training Real-World Blind Super-Resolution with Pure Synthetic Data
 
