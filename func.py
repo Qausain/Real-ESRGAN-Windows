@@ -30,6 +30,9 @@ with open('batch.bat', 'w') as f:
     for i in range(count): 
         f.write('realesrgan-ncnn-vulkan.exe -i input_videos/{}/frame{}.jpg -o frame{}.png\n'.format(vidname, i, i))
     f.write('ffmpeg -i frame%%d.png -c:v libx264 -vf fps={} -pix_fmt yuv420p {}_result.mp4\n'.format(fps, vidname))
+    f.write('mkdir {}\n'.format(vidname))
+    for i in range(count):
+        f.write('move frame{}.png {}\n'.format(i, vidname))
 
     # for i in range(count):
     #     f.write('del /f frame{}.png\n'.format(i))
