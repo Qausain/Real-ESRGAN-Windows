@@ -92,7 +92,7 @@ This executable file is based on the wonderful [Tencent/ncnn](https://github.com
 
 Requires a NVIDIA GPU
 
-- Download [Anaconda](https://www.anaconda.com/download/))
+- Download [Anaconda](https://www.anaconda.com/download/)
 
 ### Installation
 
