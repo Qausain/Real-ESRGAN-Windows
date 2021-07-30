@@ -1,5 +1,7 @@
 # Real-ESRGAN
 
+This is a forked version of Real-ESRGAN. This repo includes detailed tutorials on how to use Real-ESRGAN on Windows locally through the .exe or PyTorch. 
+
 [![download](https://img.shields.io/github/downloads/xinntao/Real-ESRGAN/total.svg)](https://github.com/xinntao/Real-ESRGAN/releases)
 [![Open issue](https://isitmaintained.com/badge/open/xinntao/Real-ESRGAN.svg)](https://github.com/xinntao/Real-ESRGAN/issues)
 [![LICENSE](https://img.shields.io/github/license/xinntao/Real-ESRGAN.svg)](https://github.com/xinntao/Real-ESRGAN/blob/master/LICENSE)
@@ -26,46 +28,55 @@ We extend the powerful ESRGAN to a practical restoration application (namely, Re
 
 ---
 
-We have provided a pretrained model (*RealESRGAN_x4plus.pth*) with upsampling X4.<br>
-**Note that RealESRGAN may still fail in some cases as the real-world degradations are really too complex.**<br>
-Moreover, it **may not** perform well on **human faces, text**, *etc*, which will be optimized later.
-<br>
+Any updates on the main repository will not be updated here. Please use this just as a tutorial reference, and refer any new updates from the original. 
 
-Real-ESRGAN will be a long-term supported project (in my current plan :smiley:). It will be continuously updated
-in my spare time.
-
-Here is a TODO list in the near future:
-
-- [ ] optimize for human faces
-- [ ] optimize for texts
-- [ ] optimize for animation images
-- [ ] support more scales
-- [ ] support controllable restoration strength
-
-If you have any good ideas or demands, please open an issue/discussion to let me know. <br>
-If you have some images that Real-ESRGAN could not well restored, please also open an issue/discussion. I will record it (but I cannot guarantee to resolve it:stuck_out_tongue:). If necessary, I will open a page to specially record these real-world cases that need to be solved, but the current technology is difficult to handle well.
+There are 2 options to run Real-ESRGAN:
+1. Windows Executable Files (.exe)
+2. CUDA & PyTorch
 
 ---
 
-### Portable executable files
+## Windows Executable Files (.exe) VULKAN ver. 
+(1:4 ratio against CUDA, time it takes VULKAN to run 1 image, CUDA can run 4 images)
+
+Does **not** require a NVIDIA GPU.
 
 You can download **Windows executable files** from https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.1/RealESRGAN-ncnn-vulkan-20210725-windows.zip
 
 This executable file is **portable** and includes all the binaries and models required. No CUDA or PyTorch environment is needed.<br>
 
-You can simply run the following command:
+1. Place the images in the same folder level as your .exe file.
+2. `cd` To where your file is located on your command prompt, and you can simply run the following command:
+   (replace the <> with the corresponding name)
+   ```bash
+   realesrgan-ncnn-vulkan.exe -i <input_image> -o output.png
+   ```
+3. (Optional) run through a video 
 
-```bash
-./realesrgan-ncnn-vulkan.exe -i input.jpg -o output.png
-```
+   I've wrote a simple Python file that would generate a .bat file that will help you run through all the frames in a video.
+   
+   Open up [Anaconda](https://www.anaconda.com/download/) prompt, input these commands to download these libraries:
+   ```
+   pip install opencv-python
+   conda install -c conda-forge ffmpeg
+   ```
+   
+   Create a folder called "📂input_videos" and drop the video inside this folder.
+   ```
+   📂Real-ESRGAN-Master/
+    ├── 📂input_videos/
+    │   └── 📜your_video.mp4 <--
+   ```
+   
+   Run the following command in anaconda prompt: (replace the <>)
+   ```
+   python func.py <your_video_file>
+   ```
+   
+   And after everything is done, you can find your result under the name `<your_video_name>_result.mp4`
 
-We have provided three models:
 
-1. realesrgan-x4plus  (default)
-2. realesrnet-x4plus
-3. esrgan-x4
 
-You can use the `-n` argument for other models, for example, `./realesrgan-ncnn-vulkan.exe -i input.jpg -o output.png -n realesrnet-x4plus`
 
 Note that it may introduce block inconsistency (and also generate slightly different results from the PyTorch implementation), because this executable file first crops the input image into several tiles, and then processes them separately, finally stitches together.
 
@@ -73,52 +84,87 @@ This executable file is based on the wonderful [Tencent/ncnn](https://github.com
 
 ---
 
-## :wrench: Dependencies and Installation
+## CUDA & PyTorch 
+(1:4 ratio against CUDA, time it takes VULKAN to run 1 image, CUDA can run 4 images)
 
-- Python >= 3.7 (Recommend to use [Anaconda](https://www.anaconda.com/download/#linux) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html))
-- [PyTorch >= 1.7](https://pytorch.org/)
+Requires a NVIDIA GPU
+
+- Download [Anaconda](https://www.anaconda.com/download/))
 
 ### Installation
 
-1. Clone repo
-
+1. Clone repo 
+    Either download this repo manually through the download button on the top right, 
+    
     ```bash
     git clone https://github.com/xinntao/Real-ESRGAN.git
-    cd Real-ESRGAN
+    ```
+    and enter the folder with the command
+    
+    ```bash
+    cd <your_file_path>/Real-ESRGAN
     ```
 
-1. Install dependent packages
+2. Install dependent packages
 
     ```bash
-    # Install basicsr - https://github.com/xinntao/BasicSR
-    # We use BasicSR for both training and inference
+    conda create -n RESRGAN python=3.7
+    conda activate RESRGAN #activate the virtual environment
+    conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
     pip install basicsr
     pip install -r requirements.txt
     ```
+    
+3. Download pre-trained models
+   
+   Download pre-trained models here: [RealESRGAN_x4plus.pth](https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth)
+   
+   and put it in experiments/pretrained_models
+   
+   ```
+   📂Real-ESRGAN-Master/
+    ├── 📂experiments/
+    │   └── 📂pretrained_models/
+    │       └── 📜RealESRGAN_x4plus.pth
+    │   
+   ```
 
-## :zap: Quick Inference
+4. Inference to obtain image results!
+   Drag and drop any images into the "📂inputs" folder, and run the following command:
+   ```bash
+   python inference_realesrgan.py --model_path experiments/pretrained_models/RealESRGAN_x4plus.pth --input inputs
+   ```
+   You can find your results in the "📂results" folder!
+   
+5. (optional) Inference to obtain video results!
+   
+   If you want to upscale a video, you will have to manually seperate the video into images with FFMPEG
+   
+   So first install ffmpeg:
+   ```
+   conda install -c conda-forge ffmpeg
+   ```
+   Then you drag and drop your video into the base folder. which is inside "📂Real-ESRGAN-Master" and on the same level with "📂experiments". 
+   
+   convert your video into png with the following command. replace out <> with the video name.
+   ```
+   ffmpeg -i <your_video.format, eg: video.mp4> inputs/<video_name>%d.png
+   ```
+   
+   Run the AI
+   ```bash
+   python inference_realesrgan.py --model_path experiments/pretrained_models/RealESRGAN_x4plus.pth --input inputs
+   ```
+   
+   Replace the details in <> and run this command
+   ```bash
+   ffmpeg -i results/<video_name> -c:v libx264 -vf fps=<your original video's FPS> -pix_fmt yuv420p <video_name>_result.mp4
+   ```
+  You will see your video is now upscaled x4 and can be found under the name `<video_name>_result.mp4`
+  
+  Remember to delete all the images inside "📂inputs" if you want to run on another video or image.
 
-Download pre-trained models: [RealESRGAN_x4plus.pth](https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth)
 
-Download pretrained models:
-
-```bash
-wget https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth -P experiments/pretrained_models
-```
-
-Inference!
-
-```bash
-python inference_realesrgan.py --model_path experiments/pretrained_models/RealESRGAN_x4plus.pth --input inputs
-```
-
-Results are in the `results` folder
-
-## :european_castle: Model Zoo
-
-- [RealESRGAN-x4plus](https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth)
-- [RealESRNet-x4plus](https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.1/RealESRNet_x4plus.pth)
-- [official ESRGAN-x4](https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.1/ESRGAN_SRx4_DF2KOST_official-ff704c30.pth)
 
 ## :computer: Training
 
