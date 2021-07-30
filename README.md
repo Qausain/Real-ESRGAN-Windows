@@ -181,4 +181,4 @@ A detailed guide can be found in [Training.md](Training.md).
 
 ## :e-mail: Contact
 
-If you have any question, please email `xintao.wang@outlook.com` or `xintaowang@tencent.com`.
+If you have any question, please join the discord channel: https://dsc.gg/bycloud.
