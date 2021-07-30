@@ -48,7 +48,7 @@ You can download **Windows executable files** from https://github.com/xinntao/Re
 
 This executable file is **portable** and includes all the binaries and models required. No CUDA or PyTorch environment is needed.<br>
 
-1. Place the images in the same folder level as your .exe file.
+1. Place the images in the same folder level as your .exe file. Download the `func.py` in this repo.
 2. `cd` To where your file is located on your command prompt, and you can simply run the following command:
    (replace the <> with the corresponding name)
    ```bash
