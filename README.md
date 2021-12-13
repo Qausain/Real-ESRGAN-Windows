@@ -2,6 +2,8 @@
 
 This is a forked version of Real-ESRGAN. This repo includes detailed tutorials on how to use Real-ESRGAN on Windows locally through the .exe or PyTorch for both images and videos. 
 
+# This version of Real-ESRGAN is out of date. The main branch has now officially support Windows, go [here](https://github.com/xinntao/Real-ESRGAN) to the main branch. You can still use this repo as a reference for setting up environment and such.
+
 [![download](https://img.shields.io/github/downloads/xinntao/Real-ESRGAN/total.svg)](https://github.com/xinntao/Real-ESRGAN/releases)
 [![Open issue](https://isitmaintained.com/badge/open/xinntao/Real-ESRGAN.svg)](https://github.com/xinntao/Real-ESRGAN/issues)
 [![LICENSE](https://img.shields.io/github/license/xinntao/Real-ESRGAN.svg)](https://github.com/xinntao/Real-ESRGAN/blob/master/LICENSE)
